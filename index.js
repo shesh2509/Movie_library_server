@@ -19,7 +19,9 @@ mongoose.connect(process.env.MONGO_URL)
 
 app.use(express.json());
 app.use(logger("tiny"));
-app.use(cors());
+app.use(cors({
+    origin: 'https://movie-library-server-nine.vercel.app/'
+}));
 
 
 app.use("/api/auth", authRoute);
