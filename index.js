@@ -17,9 +17,14 @@ mongoose.connect(process.env.MONGO_URL)
 });
 
 
+const corsOptions = {
+    origin: 'https://movie-library-theta.vercel.app', 
+    optionsSuccessStatus: 200
+};
+
 app.use(express.json());
 app.use(logger("tiny"));
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 app.use("/api/auth", authRoute);
